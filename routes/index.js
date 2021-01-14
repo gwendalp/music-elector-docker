@@ -153,9 +153,9 @@ router.get('/play', (req, res) => {
 
 
   });
+// test
 
-
-  spotifyApi
+spotifyApi
 .clientCredentialsGrant()
 .then(function(data) {
   
@@ -170,8 +170,10 @@ router.get('/play', (req, res) => {
 
   // Go through the first page of results
   var firstPage = data.body.tracks.items;
-
-  res.redirect(firstPage[0].preview_url)
+  if (firstPage[0].preview_url != null)
+    {res.redirect(firstPage[0].preview_url)}
+    else{res.redirect('https://open.spotify.com/embed/track/' + firstPage[0].id)}
+  //res.redirect(firstPage[0].preview_url)
   
 }).catch(function(err) {
   console.log('Something went wrong:', err.message);
