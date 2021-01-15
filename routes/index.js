@@ -182,7 +182,16 @@ spotifyApi
 
 })
   
- 
+router.post('/seed', (req, res) => {
+  console.log('server received the click');
+  tools= require('./../seedTool');
+  tools.seed();
+  res.redirect('/')
+
+
+
+
+});
 
 
 module.exports = router;
