@@ -171,8 +171,8 @@ spotifyApi
   // Go through the first page of results
   var firstPage = data.body.tracks.items;
   if (firstPage[0].preview_url != null)
-    {res.redirect(firstPage[0].preview_url)}
-    else{res.redirect('https://open.spotify.com/embed/track/' + firstPage[0].id)}
+    {res.send({url :firstPage[0].preview_url})}
+    else{res.send({url:'https://open.spotify.com/embed/track/' + firstPage[0].id})}
   //res.redirect(firstPage[0].preview_url)
   
 }).catch(function(err) {
